@@ -13,6 +13,6 @@
         "php": ">=5.4"
     },
     "autoload": {
-        "psr-4": { "Opifer\\RulesEngine\\": "" }
+        "psr-4": { "Opifer\\RulesEngine\\": "src/" }
     }
 }
