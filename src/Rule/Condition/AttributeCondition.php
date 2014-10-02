@@ -75,5 +75,4 @@ class AttributeCondition extends BaseCondition
             $this->operator = $this->operatorOpts[0];
         }
     }
-
 }

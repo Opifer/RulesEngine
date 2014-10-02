@@ -6,8 +6,9 @@ use JMS\Serializer\Annotation as JMS;
 
 use Opifer\RulesEngine\Environment\Environment;
 
-class StringValueCondition extends ValueCondition
+class StringCondition extends AttributeCondition
 {
+
     /**
      * @var array
      * 
@@ -25,6 +26,7 @@ class StringValueCondition extends ValueCondition
      */
     protected $right;
 
+
     /**
      * Evaluate
      *
@@ -33,44 +35,22 @@ class StringValueCondition extends ValueCondition
     public function evaluate(Environment $env)
     {
         $qb = $env->queryBuilder;
-
-        $paramName = $env->newParamName();
+        
         $paramValue = $env->newParamName();
-
-        $paramContent = $env->newParamName();
-        $paramVs = $env->newParamName();
-        $paramValues = $env->newParamName();
-        $paramAttribute = $env->newParamName();
-
-        $subQuery = $env->cloneQueryBuilder();
-
-        $rootAliases = $subQuery->getRootAliases();
-        $subQuery
-            ->innerJoin($rootAliases[0].'.valueSet', $paramVs)
-            ->innerJoin($paramVs.'.values', $paramValues)
-            ->innerJoin($paramValues.'.attribute', $paramAttribute)
-            ->andWhere($paramAttribute.'.name = :'.$paramName);
 
         switch ($this->operator) {
             case 'equals':
-                $subQuery->andWhere($paramValues.'.value = :'.$paramValue);
+                $qb->andWhere($this->attribute.' = :'.$paramValue);
                 $qb->setParameter($paramValue, $this->getRight()->getValue());
                 break;
             case 'notequals':
-                $subQuery->andWhere($paramValues.'.value <> :'.$paramValue);
+                $qb->andWhere($this->attribute.' <> :'.$paramValue);
                 $qb->setParameter($paramValue, $this->getRight()->getValue());
                 break;
             case 'contains':
-                $subQuery->andWhere($paramValues.'.value LIKE :'.$paramValue);
+                $qb->andWhere($this->attribute.' LIKE :'.$paramValue);
                 $qb->setParameter($paramValue, '%'. $this->getRight()->getValue().'%');
                 break;
         }
-
-        $qb
-            ->andWhere($qb->expr()->in('a', $subQuery->getDQL()))
-            ->setParameter($paramName, $this->getAttribute())
-        ;
-
-        // doctrineDump($qb->getDql());
     }
 }

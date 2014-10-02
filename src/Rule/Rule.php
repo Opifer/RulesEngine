@@ -19,6 +19,7 @@ use JMS\Serializer\Annotation as JMS;
  *    "AttributeCondition": "Opifer\RulesEngine\Rule\Condition\AttributeCondition",
  *    "EntityCondition": "Opifer\RulesEngine\Rule\Condition\EntityCondition",
  *    "ValueCondition": "Opifer\RulesEngine\Rule\Condition\ValueCondition",
+ *    "StringCondition": "Opifer\RulesEngine\Rule\Condition\StringCondition",
  *    "StringValueCondition": "Opifer\RulesEngine\Rule\Condition\StringValueCondition",
  *    "CheckListValueCondition": "Opifer\RulesEngine\Rule\Condition\CheckListValueCondition",
  *    "AddressValueCityCondition": "Opifer\RulesEngine\Rule\Condition\AddressValueCityCondition",
