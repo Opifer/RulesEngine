@@ -2,7 +2,7 @@
 
 namespace Opifer\RulesEngine\Rule\Condition;
 
-use Opifer\RulesEngine\Environment\Environment;
+use Opifer\RulesEngine\Environment\EnvironmentInterface;
 use Opifer\RulesEngine\Operator\Operator;
 use Opifer\RulesEngine\Rule\Rule;
 
@@ -22,7 +22,7 @@ abstract class Condition extends Rule
      */
     protected $operator;
 
-    public function evaluate(Environment $env)
+    public function evaluate(EnvironmentInterface $env)
     {
         $method = $this->operator;
 

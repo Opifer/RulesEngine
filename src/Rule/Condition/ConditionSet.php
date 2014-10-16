@@ -2,7 +2,7 @@
 
 namespace Opifer\RulesEngine\Rule\Condition;
 
-use Opifer\RulesEngine\Environment\Environment;
+use Opifer\RulesEngine\Environment\EnvironmentInterface;
 use Opifer\RulesEngine\Rule\RuleSet;
 use JMS\Serializer\Annotation as JMS;
 
@@ -49,7 +49,7 @@ class ConditionSet extends RuleSet
      */
     public $typeOpts = array('all', 'any');
 
-    public function evaluate(Environment $env)
+    public function evaluate(EnvironmentInterface $env)
     {
         if (!count($this->children))
             return true;

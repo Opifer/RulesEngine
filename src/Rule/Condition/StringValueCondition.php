@@ -4,7 +4,7 @@ namespace Opifer\RulesEngine\Rule\Condition;
 
 use JMS\Serializer\Annotation as JMS;
 
-use Opifer\RulesEngine\Environment\Environment;
+use Opifer\RulesEngine\Environment\EnvironmentInterface;
 
 class StringValueCondition extends ValueCondition
 {
@@ -30,7 +30,7 @@ class StringValueCondition extends ValueCondition
      *
      * @param Environment $env
      */
-    public function evaluate(Environment $env)
+    public function evaluate(EnvironmentInterface $env)
     {
         $qb = $env->queryBuilder;
 
@@ -70,7 +70,5 @@ class StringValueCondition extends ValueCondition
             ->andWhere($qb->expr()->in('a', $subQuery->getDQL()))
             ->setParameter($paramName, $this->getAttribute())
         ;
-
-        // doctrineDump($qb->getDql());
     }
 }

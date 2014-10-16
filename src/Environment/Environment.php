@@ -5,7 +5,7 @@ namespace Opifer\RulesEngine\Environment;
 use Opifer\RulesEngine\Operator\Operator;
 use Opifer\RulesEngine\Rule\Rule;
 
-class Environment
+class Environment implements EnvironmentInterface
 {
     /**
      * Evaluate

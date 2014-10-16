@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation as JMS;
  *
  * @JMS\ExclusionPolicy("none")
  */
-class String extends Value
+class String extends Value implements ValueInterface
 {
     /**
      *

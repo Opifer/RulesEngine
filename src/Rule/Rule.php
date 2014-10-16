@@ -2,7 +2,7 @@
 
 namespace Opifer\RulesEngine\Rule;
 
-use Opifer\RulesEngine\Environment\Environment;
+use Opifer\RulesEngine\Environment\EnvironmentInterface;
 use Opifer\RulesEngine\Condition\Condition;
 use Opifer\RulesEngine\Value\Value;
 use JMS\Serializer\Annotation as JMS;
@@ -61,5 +61,5 @@ abstract class Rule
         return $this;
     }
 
-    abstract public function evaluate(Environment $environment);
+    abstract public function evaluate(EnvironmentInterface $environment);
 }

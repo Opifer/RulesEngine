@@ -4,7 +4,7 @@ namespace Opifer\RulesEngine\Rule\Condition;
 
 use JMS\Serializer\Annotation as JMS;
 
-use Opifer\RulesEngine\Environment\Environment;
+use Opifer\RulesEngine\Environment\EnvironmentInterface;
 
 class StringCondition extends AttributeCondition
 {
@@ -32,7 +32,7 @@ class StringCondition extends AttributeCondition
      *
      * @param Environment $env
      */
-    public function evaluate(Environment $env)
+    public function evaluate(EnvironmentInterface $env)
     {
         $qb = $env->queryBuilder;
         

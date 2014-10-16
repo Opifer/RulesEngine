@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation as JMS;
  *
  * @JMS\ExclusionPolicy("none")
  */
-class ArrayList extends Value
+class ArrayList extends Value implements ValueInterface
 {
     /**
      *
@@ -29,5 +29,4 @@ class ArrayList extends Value
     {
         $this->value = $value;
     }
-
 }

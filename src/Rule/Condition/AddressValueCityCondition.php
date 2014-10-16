@@ -2,7 +2,7 @@
 
 namespace Opifer\RulesEngine\Rule\Condition;
 
-use Opifer\RulesEngine\Environment\Environment;
+use Opifer\RulesEngine\Environment\EnvironmentInterface;
 
 class AddressValueCityCondition extends ValueCondition
 {
@@ -16,7 +16,7 @@ class AddressValueCityCondition extends ValueCondition
      *
      * @param Environment $env
      */
-    public function evaluate(Environment $env)
+    public function evaluate(EnvironmentInterface $env)
     {
         $qb = $env->queryBuilder;
 
@@ -37,7 +37,8 @@ class AddressValueCityCondition extends ValueCondition
             ->innerJoin($paramVs.'.values', $paramValues)
             ->innerJoin($paramValues.'.attribute', $paramAttribute)
             ->innerJoin($paramValues . '.address', $paramAddress)
-            ->andWhere($paramAttribute.'.name = :'.$paramName);
+            ->andWhere($paramAttribute.'.name = :'.$paramName)
+        ;
 
         switch ($this->operator) {
             case 'equals':

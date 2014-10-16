@@ -4,7 +4,7 @@ namespace Opifer\RulesEngine\Rule\Condition;
 
 use JMS\Serializer\Annotation as JMS;
 use Opifer\RulesEngine\Value\ArrayList;
-use Opifer\RulesEngine\Environment\Environment;
+use Opifer\RulesEngine\Environment\EnvironmentInterface;
 
 class CheckListValueCondition extends AttributeCondition
 {
@@ -57,7 +57,7 @@ class CheckListValueCondition extends AttributeCondition
      *
      * @param Environment $env
      */
-    public function evaluate(Environment $env)
+    public function evaluate(EnvironmentInterface $env)
     {
         $qb = $env->queryBuilder;
 

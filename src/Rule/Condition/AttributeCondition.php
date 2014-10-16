@@ -3,10 +3,10 @@
 namespace Opifer\RulesEngine\Rule\Condition;
 
 use JMS\Serializer\Annotation as JMS;
+use Opifer\RulesEngine\Value\String;
 
 class AttributeCondition extends BaseCondition
 {
-
     /**
      *
      * @var string
@@ -25,9 +25,22 @@ class AttributeCondition extends BaseCondition
      */
     protected $attribute;
 
+    /**
+     * Constructor
+     */
     public function __construct()
     {
-        $this->right = new \Opifer\RulesEngine\Value\String();
+        $this->right = new String();
+    }
+
+    /**
+     * @JMS\PreSerialize
+     */
+    public function setDefaultOperator()
+    {
+        if (!$this->operator && count($this->operatorOpts)) {
+            $this->operator = $this->operatorOpts[0];
+        }
     }
 
     public function getLeft()
@@ -64,15 +77,5 @@ class AttributeCondition extends BaseCondition
     public function getRight()
     {
         return $this->right;
-    }
-
-    /**
-     * @JMS\PreSerialize
-     */
-    public function setDefaultOperator()
-    {
-        if (!$this->operator && count($this->operatorOpts)) {
-            $this->operator = $this->operatorOpts[0];
-        }
     }
 }

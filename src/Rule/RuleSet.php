@@ -2,7 +2,7 @@
 
 namespace Opifer\RulesEngine\Rule;
 
-use Opifer\RulesEngine\Environment\Environment;
+use Opifer\RulesEngine\Environment\EnvironmentInterface;
 
 use JMS\Serializer\Annotation as JMS;
 
@@ -21,7 +21,7 @@ class RuleSet extends Rule
      */
     protected $children = array();
 
-    public function evaluate(Environment $environment)
+    public function evaluate(EnvironmentInterface $environment)
     {
         foreach ($this->children as $child) {
             $child->evaluate($environment);

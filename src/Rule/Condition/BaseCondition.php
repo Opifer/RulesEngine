@@ -50,21 +50,16 @@ abstract class BaseCondition extends Condition
      */
     protected $operatorOpts = array();
 
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    public function getGroup()
-    {
-        return $this->group;
-    }
-
     public function setName($name)
     {
         $this->name = $name;
 
         return $this;
+    }
+
+    public function getName()
+    {
+        return $this->name;
     }
 
     public function setGroup($group)
@@ -74,15 +69,20 @@ abstract class BaseCondition extends Condition
         return $this;
     }
 
-    public function getOperatorOpts()
+    public function getGroup()
     {
-        return $this->operatorOpts;
+        return $this->group;
     }
 
-    public function setOperatorOpts($operatorOpts)
+    public function setOperatorOpts(array $operatorOpts)
     {
         $this->operatorOpts = $operatorOpts;
 
         return $this;
+    }
+
+    public function getOperatorOpts()
+    {
+        return $this->operatorOpts;
     }
 }

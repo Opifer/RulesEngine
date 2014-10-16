@@ -4,7 +4,7 @@ namespace Opifer\RulesEngine\Rule\Condition;
 
 use JMS\Serializer\Annotation as JMS;
 use Opifer\RulesEngine\Value\ArrayList;
-use Opifer\RulesEngine\Environment\Environment;
+use Opifer\RulesEngine\Environment\EnvironmentInterface;
 
 class TemplateCondition extends AttributeCondition
 {
@@ -53,7 +53,7 @@ class TemplateCondition extends AttributeCondition
      *
      * @param Environment $env
      */
-    public function evaluate(Environment $env)
+    public function evaluate(EnvironmentInterface $env)
     {
         $qb = $env->queryBuilder;
 
@@ -62,9 +62,9 @@ class TemplateCondition extends AttributeCondition
         $paramVs = $env->newParamName();
 
         $rootAliases = $qb->getRootAliases();
-        $qb
-                ->innerJoin($rootAliases[0] . '.valueSet', $paramVs)
-                ->innerJoin($paramVs . '.template', $paramTemplate);
+        
+        $qb->innerJoin($rootAliases[0] . '.valueSet', $paramVs)
+            ->innerJoin($paramVs . '.template', $paramTemplate);
 
         switch ($this->operator) {
             case 'in':
@@ -76,8 +76,5 @@ class TemplateCondition extends AttributeCondition
         }
 
         $qb->setParameter($paramValue, $this->getRight()->getValue());
-
-//        doctrineDump($qb->getQuery());
-//        die();
     }
 }
