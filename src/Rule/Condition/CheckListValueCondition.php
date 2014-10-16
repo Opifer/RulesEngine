@@ -10,8 +10,7 @@ class CheckListValueCondition extends AttributeCondition
 {
 
     /**
-     *
-     * @var Opifer\RulesEngine\Value\Value
+     * @var Opifer\RulesEngine\Value\ValueInterface
      *
      * @JMS\Expose
      * @JMS\Type("Opifer\RulesEngine\Value\ArrayList")

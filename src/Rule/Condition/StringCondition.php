@@ -26,7 +26,6 @@ class StringCondition extends AttributeCondition
      */
     protected $right;
 
-
     /**
      * Evaluate
      *

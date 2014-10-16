@@ -34,6 +34,7 @@ class EntityCondition extends BaseCondition
      * @JMS\Type("string")
      */
     protected $attribute;
+    
     /**
      *
      * @var string

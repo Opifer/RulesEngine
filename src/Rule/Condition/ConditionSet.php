@@ -89,5 +89,4 @@ class ConditionSet extends RuleSet
     {
         return 'Condition Set';
     }
-
 }

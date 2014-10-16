@@ -59,7 +59,5 @@ class AddressValueCityCondition extends ValueCondition
             ->andWhere($qb->expr()->in('a', $subQuery->getDQL()))
             ->setParameter($paramName, $this->getAttribute())
         ;
-
-        // doctrineDump($qb->getDql());
     }
 }
