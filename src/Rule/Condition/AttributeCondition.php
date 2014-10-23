@@ -3,12 +3,13 @@
 namespace Opifer\RulesEngine\Rule\Condition;
 
 use JMS\Serializer\Annotation as JMS;
+
+use Opifer\RulesEngine\Environment\EnvironmentInterface;
 use Opifer\RulesEngine\Value\String;
 
 class AttributeCondition extends BaseCondition
 {
     /**
-     *
      * @var string
      *
      * @JMS\Expose
@@ -17,13 +18,28 @@ class AttributeCondition extends BaseCondition
     protected $entity;
 
     /**
-     *
      * @var string
      *
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $attribute;
+
+    /**
+     * @var string
+     *
+     * @JMS\Expose
+     * @JMS\Type("string")
+     */
+    protected $type;
+
+    /**
+     * @var string
+     *
+     * @JMS\Expose
+     * @JMS\Type("Opifer\RulesEngine\Value\String")
+     */
+    protected $right;
 
     /**
      * Constructor
@@ -43,6 +59,46 @@ class AttributeCondition extends BaseCondition
         }
     }
 
+    /**
+     * Evaluate
+     *
+     * @param Environment $env
+     */
+    public function evaluate(EnvironmentInterface $env)
+    {
+        $qb = $env->queryBuilder;
+        
+        $value = $env->newParamName();
+
+        switch ($this->operator) {
+            case 'equals':
+                $qb->andWhere('a.'.$this->attribute.' = :'.$value);
+                $qb->setParameter($value, $this->getRight()->getValue());
+                break;
+            case 'notequals':
+                $qb->andWhere('a.'.$this->attribute.' <> :'.$value);
+                $qb->setParameter($value, $this->getRight()->getValue());
+                break;
+            case 'contains':
+                $qb->andWhere('a.'.$this->attribute.' LIKE :'.$value);
+                $qb->setParameter($value, '%'. $this->getRight()->getValue().'%');
+                break;
+            case 'greaterthan':
+                $qb->andWhere('a.'.$this->attribute.' > :'.$value);
+                $qb->setParameter($value, $this->getRight()->getValue());
+                break;
+            case 'lessthan':
+                $qb->andWhere('a.'.$this->attribute.' < :'.$value);
+                $qb->setParameter($value, $this->getRight()->getValue());
+                break;
+        }
+    }
+
+    /**
+     * Get left
+     *
+     * @return mixed
+     */
     public function getLeft()
     {
         $method = 'get' . $this->attribute;
@@ -50,11 +106,31 @@ class AttributeCondition extends BaseCondition
         return $this->subject->$method();
     }
 
+    /**
+     * Get right
+     *
+     * @return mixed
+     */
+    public function getRight()
+    {
+        return $this->right;
+    }
+
+    /**
+     * Get attribute
+     *
+     * @return string
+     */
     public function getAttribute()
     {
         return $this->attribute;
     }
 
+    /**
+     * Set attribute
+     *
+     * @param string $attribute
+     */
     public function setAttribute($attribute)
     {
         $this->attribute = $attribute;
@@ -62,11 +138,21 @@ class AttributeCondition extends BaseCondition
         return $this;
     }
 
+    /**
+     * Get entity
+     *
+     * @return string
+     */
     public function getEntity()
     {
         return $this->entity;
     }
 
+    /**
+     * Set entity
+     *
+     * @param string $entity
+     */
     public function setEntity($entity)
     {
         $this->entity = $entity;
@@ -74,8 +160,26 @@ class AttributeCondition extends BaseCondition
         return $this;
     }
 
-    public function getRight()
+    /**
+     * Set the type and predefine the operatorOpts by type
+     */
+    public function setType($type)
     {
-        return $this->right;
+        $this->type = $type;
+
+        switch ($type) {
+            case 'text':
+            case 'string':
+                $this->operatorOpts = ['equals', 'notequals', 'contains'];
+                break;
+            case 'integer':
+                $this->operatorOpts = ['equals', 'notequals', 'greaterthan', 'lessthan'];
+                break;
+            case 'boolean':
+                $this->operatorOpts = ['equals'];
+                break;
+        }
+
+        return $this;
     }
 }

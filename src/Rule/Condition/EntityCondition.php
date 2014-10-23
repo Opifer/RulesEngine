@@ -128,5 +128,4 @@ class EntityCondition extends BaseCondition
     {
         return $this->right;
     }
-
 }

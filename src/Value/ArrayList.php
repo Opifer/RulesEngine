@@ -12,11 +12,10 @@ use JMS\Serializer\Annotation as JMS;
 class ArrayList extends Value implements ValueInterface
 {
     /**
-     *
+     * @var array
+     * 
      * @JMS\Expose
      * @JMS\Type("array")
-     *
-     * @return array
      */
     protected $value;
 

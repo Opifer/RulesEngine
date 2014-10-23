@@ -12,11 +12,10 @@ use JMS\Serializer\Annotation as JMS;
 class String extends Value implements ValueInterface
 {
     /**
-     *
+     * @var string
+     * 
      * @JMS\Expose
      * @JMS\Type("string")
-     *
-     * @return string
      */
     protected $value;
 
@@ -29,5 +28,4 @@ class String extends Value implements ValueInterface
     {
         $this->value = $value;
     }
-
 }
