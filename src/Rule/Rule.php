@@ -17,6 +17,7 @@ use JMS\Serializer\Annotation as JMS;
  *    "Condition": "Opifer\RulesEngine\Rule\Condition\Condition",
  *    "ConditionSet": "Opifer\RulesEngine\Rule\Condition\ConditionSet",
  *    "AttributeCondition": "Opifer\RulesEngine\Rule\Condition\AttributeCondition",
+ *    "RelationCondition": "Opifer\RulesEngine\Rule\Condition\RelationCondition",
  *    "EntityCondition": "Opifer\RulesEngine\Rule\Condition\EntityCondition",
  *    "ValueCondition": "Opifer\RulesEngine\Rule\Condition\ValueCondition",
  *    "StringCondition": "Opifer\RulesEngine\Rule\Condition\StringCondition",
