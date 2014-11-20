@@ -4,6 +4,9 @@ namespace Opifer\RulesEngine\Environment;
 
 use Opifer\RulesEngine\Operator\DoctrineOperator;
 
+/**
+ * Doctrine Environment
+ */
 class DoctrineEnvironment extends Environment
 {
     /**
@@ -21,11 +24,21 @@ class DoctrineEnvironment extends Environment
      */
     public $queryBuilder;
 
+    /**
+     * Get operator
+     *
+     * @return DoctrineOperator
+     */
     public function getOperator()
     {
         return new DoctrineOperator();
     }
 
+    /**
+     * Generate a new param name to avoid query collisions
+     *
+     * @return string
+     */
     public function newParamName()
     {
         $this->paramCount++;
@@ -33,6 +46,14 @@ class DoctrineEnvironment extends Environment
         return 'param' . $this->paramCount;
     }
 
+    /**
+     * Inner join
+     *
+     * @param  string $join
+     * @param  string $alias
+     *
+     * @return DoctrineEnvironment
+     */
     public function innerJoin($join, $alias)
     {
         if (!in_array($alias, $this->joins)) {
@@ -43,9 +64,15 @@ class DoctrineEnvironment extends Environment
         return $this;
     }
 
+    /**
+     * Clone the query builder
+     *
+     * @return QueryBuilder
+     */
     public function cloneQueryBuilder()
     {
         $paramContent = $this->newParamName();
+        
         $subQuery = clone $this->queryBuilder;
         $subQuery->resetDQLParts();
         $subQuery->setParameters([]);

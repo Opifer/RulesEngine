@@ -5,11 +5,14 @@ namespace Opifer\RulesEngine\Rule\Condition;
 use JMS\Serializer\Annotation as JMS;
 use Opifer\RulesEngine\Value\ArrayList;
 
+/**
+ * Entity Condition
+ *
+ * @deprecated  in favor of AttributeCondition
+ */
 class EntityCondition extends BaseCondition
 {
-
     /**
-     *
      * @var string
      *
      * @JMS\Expose
@@ -18,7 +21,6 @@ class EntityCondition extends BaseCondition
     protected $name;
 
     /**
-     *
      * @var string
      *
      * @JMS\Expose
@@ -27,7 +29,6 @@ class EntityCondition extends BaseCondition
     protected $entity;
 
     /**
-     *
      * @var string
      *
      * @JMS\Expose
@@ -36,7 +37,6 @@ class EntityCondition extends BaseCondition
     protected $attribute;
     
     /**
-     *
      * @var string
      *
      * @JMS\Expose
@@ -61,6 +61,9 @@ class EntityCondition extends BaseCondition
      */
     protected $operatorOpts = array();
 
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         $this->right = new ArrayList();
@@ -117,7 +120,7 @@ class EntityCondition extends BaseCondition
         return $this->operatorOpts;
     }
 
-    public function setOperatorOpts($operatorOpts)
+    public function setOperatorOpts(array $operatorOpts)
     {
         $this->operatorOpts = $operatorOpts;
 

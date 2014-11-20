@@ -6,6 +6,9 @@ use JMS\Serializer\Annotation as JMS;
 use Opifer\RulesEngine\Value\ArrayList;
 use Opifer\RulesEngine\Environment\EnvironmentInterface;
 
+/**
+ * Template condition
+ */
 class TemplateCondition extends AttributeCondition
 {
     /**
@@ -14,7 +17,6 @@ class TemplateCondition extends AttributeCondition
     protected $operatorOpts = array('in', 'notin');
 
     /**
-     *
      * @var string
      *
      * @JMS\Expose
@@ -23,24 +25,37 @@ class TemplateCondition extends AttributeCondition
     protected $right;
 
     /**
-     *
      * @var array
      *
      * @JMS\Type("array")
      */
     protected $options = array();
 
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         parent::__construct();
+
         $this->right = new ArrayList();
     }
 
+    /**
+     * Get options
+     *
+     * @return array
+     */
     public function getOptions()
     {
         return $this->options;
     }
 
+    /**
+     * Set options
+     *
+     * @param array $options
+     */
     public function setOptions($options)
     {
         $this->options = $options;
@@ -51,7 +66,7 @@ class TemplateCondition extends AttributeCondition
     /**
      * Evaluate
      *
-     * @param Environment $env
+     * @param EnvironmentInterface $env
      */
     public function evaluate(EnvironmentInterface $env)
     {
