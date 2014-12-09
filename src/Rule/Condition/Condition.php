@@ -22,6 +22,13 @@ abstract class Condition extends Rule
      */
     protected $operator;
 
+    /**
+     * Evaluate
+     *
+     * @param  EnvironmentInterface $env
+     *
+     * @return mixed
+     */
     public function evaluate(EnvironmentInterface $env)
     {
         $method = $this->operator;
@@ -29,15 +36,37 @@ abstract class Condition extends Rule
         return $env->getOperator()->$method($env, $this);
     }
 
-    public function getLeft() {}
+    /**
+     * Get the left part
+     */
+    public function getLeft()
+    {
+        // ...
+    }
 
-    public function getRight() {}
+    /**
+     * Get the right part
+     */
+    public function getRight()
+    {
+        // ...
+    }
 
+    /**
+     * [getOperator description]
+     */
     public function getOperator()
     {
         return $this->operator;
     }
 
+    /**
+     * Set operator
+     *
+     * @param  string $operator
+     *
+     * @return Condition
+     */
     public function setOperator($operator)
     {
         $this->operator = $operator;
@@ -45,6 +74,11 @@ abstract class Condition extends Rule
         return $this;
     }
 
+    /**
+     * Get name
+     *
+     * @return string
+     */
     public function getName()
     {
         return 'Condition';

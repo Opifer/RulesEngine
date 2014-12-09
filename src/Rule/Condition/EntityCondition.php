@@ -7,8 +7,6 @@ use Opifer\RulesEngine\Value\ArrayList;
 
 /**
  * Entity Condition
- *
- * @deprecated  in favor of AttributeCondition
  */
 class EntityCondition extends BaseCondition
 {
@@ -35,7 +33,7 @@ class EntityCondition extends BaseCondition
      * @JMS\Type("string")
      */
     protected $attribute;
-    
+
     /**
      * @var string
      *
@@ -45,7 +43,6 @@ class EntityCondition extends BaseCondition
     protected $operator;
 
     /**
-     *
      * @var string
      *
      * @JMS\Expose
@@ -54,12 +51,19 @@ class EntityCondition extends BaseCondition
     protected $right;
 
     /**
-     *
      * @var array
      *
      * @JMS\Type("array")
      */
     protected $operatorOpts = array();
+
+    /**
+     * @var string
+     *
+     * @JMS\Expose
+     * @JMS\Type("string")
+     */
+    protected $searchUrl;
 
     /**
      * Constructor
@@ -69,16 +73,29 @@ class EntityCondition extends BaseCondition
         $this->right = new ArrayList();
     }
 
+    /**
+     * Get the left part
+     */
     public function getLeft()
     {
         return $this->subject->getId();
     }
 
+    /**
+     * Get attribute
+     */
     public function getAttribute()
     {
         return $this->attribute;
     }
 
+    /**
+     * Set attribute
+     *
+     * @param  string $attribute
+     *
+     * @return EntityCondition
+     */
     public function setAttribute($attribute)
     {
         $this->attribute = $attribute;
@@ -90,7 +107,8 @@ class EntityCondition extends BaseCondition
      * Set name
      *
      * @param  string   $name
-     * @return Template
+     *
+     * @return EntityCondition
      */
     public function setName($name)
     {
@@ -99,27 +117,47 @@ class EntityCondition extends BaseCondition
         return $this;
     }
 
+    /**
+     * Get name
+     *
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
 
-    public function getEntity()
-    {
-        return $this->entity;
-    }
-
+    /**
+     * Set the entity
+     *
+     * @param string $entity
+     *
+     * @return EntityCondition
+     */
     public function setEntity($entity)
     {
         $this->entity = $entity;
 
         return $this;
     }
-    public function getOperatorOpts()
+
+    /**
+     * Get entity
+     *
+     * @return string
+     */
+    public function getEntity()
     {
-        return $this->operatorOpts;
+        return $this->entity;
     }
 
+    /**
+     * Set the operator options
+     *
+     * @param  array $operatorOpts
+     *
+     * @return EntityCondition
+     */
     public function setOperatorOpts(array $operatorOpts)
     {
         $this->operatorOpts = $operatorOpts;
@@ -127,6 +165,45 @@ class EntityCondition extends BaseCondition
         return $this;
     }
 
+    /**
+    * Get operator options
+    *
+    * @return array
+    */
+    public function getOperatorOpts()
+    {
+        return $this->operatorOpts;
+    }
+
+    /**
+    * Set the searchUrl
+    *
+    * @param string $searchUrl
+    *
+    * @return EntityCondition
+    */
+    public function setSearchUrl($searchUrl)
+    {
+        $this->searchUrl = $searchUrl;
+
+        return $this;
+    }
+
+    /**
+    * Get searchUrl
+    *
+    * @return string
+    */
+    public function getSearchUrl()
+    {
+        return $this->searchUrl;
+    }
+
+    /**
+     * Get the right part
+     *
+     * @return mixed
+     */
     public function getRight()
     {
         return $this->right;
