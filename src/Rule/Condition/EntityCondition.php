@@ -63,6 +63,16 @@ class EntityCondition extends BaseCondition
      * @JMS\Expose
      * @JMS\Type("string")
      */
+    protected $configuration;
+
+    /**
+     * @var string
+     *
+     * @deprecated
+     *
+     * @JMS\Expose
+     * @JMS\Type("string")
+     */
     protected $searchUrl;
 
     /**
@@ -166,37 +176,37 @@ class EntityCondition extends BaseCondition
     }
 
     /**
-    * Get operator options
-    *
-    * @return array
-    */
+     * Get operator options
+     *
+     * @return array
+     */
     public function getOperatorOpts()
     {
         return $this->operatorOpts;
     }
 
     /**
-    * Set the searchUrl
-    *
-    * @param string $searchUrl
-    *
-    * @return EntityCondition
-    */
-    public function setSearchUrl($searchUrl)
+     * Set the configuration
+     *
+     * @param string $configuration
+     *
+     * @return EntityCondition
+     */
+    public function setConfiguration($configuration)
     {
-        $this->searchUrl = $searchUrl;
+        $this->configuration = $configuration;
 
         return $this;
     }
 
     /**
-    * Get searchUrl
-    *
-    * @return string
-    */
-    public function getSearchUrl()
+     * Get configuration
+     *
+     * @return string
+     */
+    public function getConfiguration()
     {
-        return $this->searchUrl;
+        return $this->configuration;
     }
 
     /**
