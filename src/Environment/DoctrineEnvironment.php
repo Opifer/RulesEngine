@@ -94,7 +94,9 @@ class DoctrineEnvironment extends Environment
             $this->queryBuilder->setMaxResults($limit);
         }
         
-        $this->queryBuilder->orderBy('a.createdAt', 'ASC');
+        if (!$this->queryBuilder->getDQLPart('orderBy')) {
+            $this->queryBuilder->orderBy('a.createdAt', 'ASC');
+        }
 
         return $this->queryBuilder->getQuery()->getResult();
     }
