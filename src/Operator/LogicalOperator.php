@@ -2,17 +2,8 @@
 
 namespace Opifer\RulesEngine\Operator;
 
-use Opifer\RulesEngine\Context\DoctrineContext;
-
-abstract class DoctrineOperator extends Operator implements OperatorInterface
+abstract class LogicalOperator extends Operator implements OperatorInterface
 {
-    protected $context;
-
-    public function setContext(DoctrineContext $context)
-    {
-        $this->context = $context;
-    }
-
     public function evaluate($left, $right)
     {
         // Override in your operator

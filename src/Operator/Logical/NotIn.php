@@ -1,17 +1,19 @@
 <?php
 
-namespace Opifer\RulesEngine\Operator;
+namespace Opifer\RulesEngine\Operator\Logical;
 
-class NotIn extends Operator
+use Opifer\RulesEngine\Operator\LogicalOperator;
+
+class NotIn extends LogicalOperator
 {
-    public function evaluate(Rule $rule)
+    public function evaluate($left, $right)
     {
-        if (is_array($rule->getLeft()) && is_array($rule->getRight())) {
-            return (count(array_intersect($rule->getLeft(), $rule->getRight()))) ? false : true;
-        } elseif (is_array($rule->getLeft()) && !is_array($rule->getRight())) {
-            return !in_array($rule->getRight(), $rule->getLeft());
-        } elseif (!is_array($rule->getLeft()) && is_array($rule->getRight())) {
-            return !in_array($rule->getLeft(), $rule->getRight());
+        if (is_array($left) && is_array($right)) {
+            return (count(array_intersect($left, $right))) ? false : true;
+        } elseif (is_array($left) && !is_array($right)) {
+            return !in_array($right, $left);
+        } elseif (!is_array($left) && is_array($right)) {
+            return !in_array($left, $right);
         }
 
         return false;

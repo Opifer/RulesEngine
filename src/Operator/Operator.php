@@ -2,7 +2,26 @@
 
 namespace Opifer\RulesEngine\Operator;
 
-abstract class Operator implements LogicalInterface
-{
+use JMS\Serializer\Annotation as JMS;
 
+/**
+ *
+ */
+abstract class Operator
+{
+    /**
+     * {@inheritDoc}
+     */
+    public function evaluate($left, $right)
+    {
+
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLabel()
+    {
+
+    }
 }

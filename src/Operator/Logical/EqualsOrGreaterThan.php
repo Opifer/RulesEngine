@@ -1,15 +1,20 @@
 <?php
 
-namespace Opifer\RulesEngine\Operator;
+namespace Opifer\RulesEngine\Operator\Logical;
 
-use Opifer\RulesEngine\Rule\Rule;
+use Opifer\RulesEngine\Operator\LogicalOperator;
 
-class EqualsOrGreaterThan extends Operator
+class EqualsOrGreaterThan extends LogicalOperator
 {
-    public function evaluate(Rule $rule)
+    public function evaluate($left, $right)
     {
-        return $rule->getLeft() >= $rule->getRight;
+        return $left >= $right;
     }
+
+    //public function evaluate(Rule $rule)
+    //{
+    //    return $rule->getLeft() >= $rule->getRight;
+    //}
 
     public function getLabel()
     {

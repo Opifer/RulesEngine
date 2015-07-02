@@ -1,0 +1,6 @@
+Opifer\RulesEngine\Operator\Operator:
+  discriminator:
+    field_name: type
+    map:
+      logical_equals: Opifer\RulesEngine\Operator\Logical\Equals
+      logical_contains: Opifer\RulesEngine\Operator\Logical\Contains
