@@ -16,17 +16,17 @@ Example
 -------
 
 ```php
-$operator = new Equals();
+use Opifer\RulesEngine\Condition\Condition;
+use Opifer\RulesEngine\Operator\Logical\Equals;
+use Opifer\RulesEngine\RulesEngine;
 
 $condition = new Condition();
 $condition->setLeft(1);
-$condition->setOperator($operator);
+$condition->setOperator(new Equals());
 $condition->setRight(1);
 
-$rule = new Rule();
-$rule->addCondition($condition);
-
-$value = $rule->interpret();
+$rulesEngine = new RulesEngine();
+$value = $rulesEngine->interpret($condition);
 
 print $value; // will print be true
 ```
