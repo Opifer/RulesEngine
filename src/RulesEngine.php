@@ -3,17 +3,16 @@
 namespace Opifer\RulesEngine;
 
 use JMS\Serializer\SerializerBuilder;
-use Opifer\RulesEngine\Condition\Condition;
 use Opifer\RulesEngine\Condition\ConditionSet;
 use Opifer\RulesEngine\Context\Context;
 
 class RulesEngine
 {
     /**
-     * Interpret this rule
+     * Interpret this rule.
      *
      * @param ConditionSet $set
-     * @param Context $context
+     * @param Context      $context
      *
      * @return bool
      */

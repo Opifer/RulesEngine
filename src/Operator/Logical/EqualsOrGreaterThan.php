@@ -11,11 +11,6 @@ class EqualsOrGreaterThan extends LogicalOperator
         return $left >= $right;
     }
 
-    //public function evaluate(Rule $rule)
-    //{
-    //    return $rule->getLeft() >= $rule->getRight;
-    //}
-
     public function getLabel()
     {
         return 'equals or is greater than';

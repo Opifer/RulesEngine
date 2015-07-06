@@ -44,7 +44,7 @@ class ConditionSet
     }
 
     /**
-     * Add a condition
+     * Add a condition.
      *
      * @param Condition $condition
      *

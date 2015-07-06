@@ -34,7 +34,11 @@ class Condition
      */
     public function getLeft()
     {
-        return $this->left;
+        if (!$left = json_decode($this->left, true)) {
+            return $this->left;
+        }
+
+        return $left;
     }
 
     /**
@@ -42,6 +46,10 @@ class Condition
      */
     public function setLeft($left)
     {
+        if (is_array($left)) {
+            $left = json_encode($left);
+        }
+
         $this->left = $left;
 
         return $this;
@@ -70,7 +78,11 @@ class Condition
      */
     public function getRight()
     {
-        return $this->right;
+        if (!$right = json_decode($this->right, true)) {
+            return $this->right;
+        }
+
+        return $right;
     }
 
     /**
@@ -78,6 +90,10 @@ class Condition
      */
     public function setRight($right)
     {
+        if (is_array($right)) {
+            $right = json_encode($right);
+        }
+
         $this->right = $right;
 
         return $this;

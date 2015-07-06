@@ -3,6 +3,10 @@
 RulesEngine
 ===========
 
+This Rulesengine allows you to create, serialize & interpret a set of conditions of any kind.
+A condition could be anything from a simple logical check if 1 equals 1, to building
+database queries.
+
 Installation
 ------------
 
@@ -28,5 +32,5 @@ $condition->setRight(1);
 $rulesEngine = new RulesEngine();
 $value = $rulesEngine->interpret($condition);
 
-print $value; // will print be true
+print $value; // will print true
 ```

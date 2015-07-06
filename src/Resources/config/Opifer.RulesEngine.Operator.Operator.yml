@@ -2,5 +2,18 @@ Opifer\RulesEngine\Operator\Operator:
   discriminator:
     field_name: type
     map:
-      logical_equals: Opifer\RulesEngine\Operator\Logical\Equals
+      doctrine_equals: Opifer\RulesEngine\Operator\Doctrine\Equals
+      doctrine_in: Opifer\RulesEngine\Operator\Doctrine\In
+      doctrine_like: Opifer\RulesEngine\Operator\Doctrine\Like
       logical_contains: Opifer\RulesEngine\Operator\Logical\Contains
+      logical_equals: Opifer\RulesEngine\Operator\Logical\Equals
+      logical_equalsorgreaterthan: Opifer\RulesEngine\Operator\Logical\EqualsOrGreaterThan
+      logical_equalsorlessthan: Opifer\RulesEngine\Operator\Logical\EqualsOrLessThan
+      logical_greaterthan: Opifer\RulesEngine\Operator\Logical\GreaterThan
+      logical_in: Opifer\RulesEngine\Operator\Logical\In
+      logical_less: Opifer\RulesEngine\Operator\Logical\LessThan
+      logical_matchregex: Opifer\RulesEngine\Operator\Logical\MatchRegex
+      logical_notcontains: Opifer\RulesEngine\Operator\Logical\NotContains
+      logical_notequals: Opifer\RulesEngine\Operator\Logical\NotEquals
+      logical_notin: Opifer\RulesEngine\Operator\Logical\NotIn
+      logical_notmatchregex: Opifer\RulesEngine\Operator\Logical\NotMatchRegex

@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Opifer\RulesEngine\Condition\Condition;
 
 /**
- * Doctrine Context
+ * Doctrine Context.
  */
 class DoctrineContext extends Context
 {
@@ -22,12 +22,12 @@ class DoctrineContext extends Context
     protected $joins = [];
 
     /**
-     * @var integer
+     * @var int
      */
     protected $paramCount = 0;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param QueryBuilder $qb
      */
@@ -39,18 +39,19 @@ class DoctrineContext extends Context
     /**
      * @param Condition $condition
      *
-     * @return boolean
+     * @return bool
      */
     public function evaluate(Condition $condition)
     {
         $operator = $condition->getOperator();
         $operator->setContext($this);
 
-        return $operator->evaluate('a.'.$condition->getLeft(), $condition->getRight());
+        return $operator->evaluate($condition->getLeft(), $condition->getRight());
     }
 
     /**
      * @param QueryBuilder $qb
+     *
      * @return $this
      */
     public function setQueryBuilder(QueryBuilder $qb)
@@ -61,7 +62,7 @@ class DoctrineContext extends Context
     }
 
     /**
-     * Get the querybuilder
+     * Get the querybuilder.
      *
      * @return QueryBuilder
      */
@@ -71,10 +72,10 @@ class DoctrineContext extends Context
     }
 
     /**
-     * Inner join
+     * Inner join.
      *
-     * @param  string $join
-     * @param  string $alias
+     * @param string $join
+     * @param string $alias
      *
      * @return DoctrineContext
      */
@@ -89,9 +90,9 @@ class DoctrineContext extends Context
     }
 
     /**
-     * Get the query result
+     * Get the query result.
      *
-     * @param integer $limit
+     * @param int    $limit
      * @param string $orderBy
      * @param string $direction
      *
@@ -102,7 +103,7 @@ class DoctrineContext extends Context
         if (isset($limit)) {
             $this->qb->setMaxResults($limit);
         }
-        
+
         if (!$this->qb->getDQLPart('orderBy')) {
             $this->qb->orderBy('a.'.$orderBy, $direction);
         }
@@ -111,14 +112,14 @@ class DoctrineContext extends Context
     }
 
     /**
-     * Generate a new parameter to avoid query collisions
+     * Generate a new parameter to avoid query collisions.
      *
      * @return string
      */
     public function generateParameter()
     {
-        $this->paramCount++;
+        ++$this->paramCount;
 
-        return 'param' . $this->paramCount;
+        return 'param'.$this->paramCount;
     }
 }

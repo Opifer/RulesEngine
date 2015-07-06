@@ -6,23 +6,23 @@ use Opifer\RulesEngine\Condition\Condition;
 use Opifer\RulesEngine\Condition\ConditionSet;
 use Opifer\RulesEngine\RulesEngine;
 
-class EqualsTest extends \PHPUnit_Framework_TestCase
+class InTest extends \PHPUnit_Framework_TestCase
 {
     public function testEvaluate()
     {
-        $operator = new Equals();
-        $this->assertTrue($operator->evaluate('string', 'string'));
-        $this->assertTrue($operator->evaluate(1234, 1234));
-        $this->assertFalse($operator->evaluate('string', 'someotherstring'));
-        $this->assertFalse($operator->evaluate(1234, 2345));
+        $operator = new In();
+        $this->assertTrue($operator->evaluate('string', 'somelongstring'));
+        $this->assertTrue($operator->evaluate(2, [1,2,3]));
+        $this->assertFalse($operator->evaluate('somelongstring', 'string'));
+        $this->assertFalse($operator->evaluate(4, [1,2,3]));
     }
 
     public function testSerialize()
     {
         $condition = new Condition();
-        $condition->setLeft('somelongstring');
-        $condition->setOperator(new Equals());
-        $condition->setRight('long');
+        $condition->setLeft('string');
+        $condition->setOperator(new In());
+        $condition->setRight('somelongstring');
 
         $set = new ConditionSet();
         $set->addCondition($condition);

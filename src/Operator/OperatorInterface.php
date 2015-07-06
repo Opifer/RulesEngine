@@ -5,7 +5,7 @@ namespace Opifer\RulesEngine\Operator;
 interface OperatorInterface
 {
     /**
-     * Evaluates the left and right param according to the operator
+     * Evaluates the left and right param according to the operator.
      *
      * @param $left
      * @param $right
@@ -15,7 +15,7 @@ interface OperatorInterface
     public function evaluate($left, $right);
 
     /**
-     * Should return a human readable name of the operator
+     * Should return a human readable name of the operator.
      *
      * @return string
      */

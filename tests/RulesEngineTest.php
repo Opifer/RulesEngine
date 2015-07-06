@@ -2,11 +2,8 @@
 
 namespace Opifer\RulesEngine;
 
-use Doctrine\Common\Annotations\AnnotationRegistry;
-use JMS\Serializer\SerializerBuilder;
 use Opifer\RulesEngine\Condition\Condition;
 use Opifer\RulesEngine\Condition\ConditionSet;
-use Opifer\RulesEngine\Context\Context;
 use Opifer\RulesEngine\Operator\Logical\Contains;
 use Opifer\RulesEngine\Operator\Logical\Equals;
 
