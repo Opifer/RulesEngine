@@ -22,8 +22,8 @@ class In extends LogicalOperator
             return false;
         } elseif (!is_array($left) && is_array($right)) {
             return in_array($left, $right);
-        } else {
-            return (false === strpos($right, $left)) ? false : true;
         }
+
+        return (false === strpos($right, $left)) ? false : true;
     }
 }

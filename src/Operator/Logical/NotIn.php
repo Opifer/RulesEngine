@@ -16,6 +16,6 @@ class NotIn extends LogicalOperator
             return !in_array($left, $right);
         }
 
-        return false;
+        return (false === strpos($right, $left)) ? true : false;
     }
 }
