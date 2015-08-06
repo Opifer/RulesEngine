@@ -10,9 +10,4 @@ class NotMatchRegex extends LogicalOperator
     {
         return (preg_match($left, $right)) ? false : true;
     }
-
-    public function getLabel()
-    {
-        return 'does not match regex';
-    }
 }

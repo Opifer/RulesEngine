@@ -18,9 +18,4 @@ class NotIn extends LogicalOperator
 
         return false;
     }
-
-    public function getLabel()
-    {
-        return 'does not exist in';
-    }
 }

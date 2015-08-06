@@ -14,9 +14,4 @@ class NotContains extends LogicalOperator
             return (false === strpos($left, $right)) ? true : false;
         }
     }
-
-    public function getLabel()
-    {
-        return 'does not contain';
-    }
 }

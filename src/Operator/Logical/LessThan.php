@@ -10,9 +10,4 @@ class LessThan extends LogicalOperator
     {
         return $left < $right;
     }
-
-    public function getLabel()
-    {
-        return 'is less than';
-    }
 }

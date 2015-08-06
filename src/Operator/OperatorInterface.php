@@ -13,11 +13,4 @@ interface OperatorInterface
      * @return mixed
      */
     public function evaluate($left, $right);
-
-    /**
-     * Should return a human readable name of the operator.
-     *
-     * @return string
-     */
-    public function getLabel();
 }

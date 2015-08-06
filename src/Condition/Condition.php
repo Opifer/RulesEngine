@@ -2,6 +2,8 @@
 
 namespace Opifer\RulesEngine\Condition;
 
+use Opifer\RulesEngine\Operator\OperatorInterface;
+
 class Condition
 {
     /**
@@ -10,7 +12,7 @@ class Condition
     protected $left;
 
     /**
-     * @var \Opifer\RulesEngine\Operator\OperatorInterface
+     * @var OperatorInterface
      */
     protected $operator;
 
@@ -18,16 +20,6 @@ class Condition
      * @var mixed
      */
     protected $right;
-
-    /**
-     * @var array
-     */
-    protected $availableOperators;
-
-    /**
-     * @var array
-     */
-    protected $availableRights;
 
     /**
      * @return mixed
@@ -56,7 +48,7 @@ class Condition
     }
 
     /**
-     * @return mixed
+     * @return OperatorInterface
      */
     public function getOperator()
     {
@@ -64,9 +56,9 @@ class Condition
     }
 
     /**
-     * @param mixed $operator
+     * @param OperatorInterface $operator
      */
-    public function setOperator($operator)
+    public function setOperator(OperatorInterface $operator)
     {
         $this->operator = $operator;
 
@@ -95,42 +87,6 @@ class Condition
         }
 
         $this->right = $right;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAvailableOperators()
-    {
-        return $this->availableOperators;
-    }
-
-    /**
-     * @param mixed $availableOperators
-     */
-    public function setAvailableOperators($availableOperators)
-    {
-        $this->availableOperators = $availableOperators;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAvailableRights()
-    {
-        return $this->availableRights;
-    }
-
-    /**
-     * @param mixed $availableRights
-     */
-    public function setAvailableRights($availableRights)
-    {
-        $this->availableRights = $availableRights;
 
         return $this;
     }

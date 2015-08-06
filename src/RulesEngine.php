@@ -30,6 +30,10 @@ class RulesEngine
     }
 
     /**
+     * Serialize a conditionset
+     *
+     * @param ConditionSet $set
+     *
      * @return string
      */
     public function serialize(ConditionSet $set)
@@ -38,6 +42,8 @@ class RulesEngine
     }
 
     /**
+     * Deserialize a json string into a conditionset
+     *
      * @param string $json
      *
      * @return mixed

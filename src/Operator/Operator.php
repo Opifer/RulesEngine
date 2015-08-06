@@ -3,7 +3,7 @@
 namespace Opifer\RulesEngine\Operator;
 
 /**
- *
+ * Abstract operator
  */
 abstract class Operator
 {
@@ -12,12 +12,6 @@ abstract class Operator
      */
     public function evaluate($left, $right)
     {
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getLabel()
-    {
+        // Override in the operator
     }
 }

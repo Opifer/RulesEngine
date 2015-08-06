@@ -10,9 +10,4 @@ class Equals extends LogicalOperator
     {
         return $left === $right;
     }
-
-    //public function evaluate(Rule $rule)
-    //{
-    //    return $rule->getLeft() === $rule->getRight();
-    //}
 }

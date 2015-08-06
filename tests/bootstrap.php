@@ -9,6 +9,4 @@ call_user_func(function() {
 
     $loader = require $autoloadFile;
     $loader->add('Opifer\\RulesEngine\\Tests', __DIR__);
-
-    //AnnotationRegistry::registerLoader('class_exists');
 });

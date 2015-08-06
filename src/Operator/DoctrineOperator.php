@@ -6,23 +6,18 @@ use Opifer\RulesEngine\Context\DoctrineContext;
 
 abstract class DoctrineOperator extends Operator implements OperatorInterface
 {
+    /**
+     * @var DoctrineContext
+     */
     protected $context;
 
+    /**
+     * Make the DoctrineContext available in the operator
+     *
+     * @param DoctrineContext $context
+     */
     public function setContext(DoctrineContext $context)
     {
         $this->context = $context;
-    }
-
-    public function evaluate($left, $right)
-    {
-        // Override in your operator
-    }
-
-    public function getLabel()
-    {
-        $class = explode('\\', get_class($this));
-        $class = end($class);
-
-        return strtolower($class);
     }
 }

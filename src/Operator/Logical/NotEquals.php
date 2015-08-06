@@ -10,9 +10,4 @@ class NotEquals extends LogicalOperator
     {
         return $left !== $right;
     }
-
-    public function getLabel()
-    {
-        return 'does not equal';
-    }
 }
