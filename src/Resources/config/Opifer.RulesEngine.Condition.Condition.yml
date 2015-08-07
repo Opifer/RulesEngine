@@ -1,0 +1,12 @@
+Opifer\RulesEngine\Condition\Condition:
+  properties:
+    left:
+      type: string
+    operator:
+      type: Opifer\RulesEngine\Operator\Operator
+    right:
+      type: string
+    availableOperators:
+      type: array
+    availableRights:
+      type: array

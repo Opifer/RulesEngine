@@ -1,0 +1,7 @@
+Opifer\RulesEngine\Condition\ConditionSet:
+  exclusion_policy: NONE
+  properties:
+    conditions:
+      type: "array<Opifer\RulesEngine\Condition\Condition>"
+    operator:
+      type: string

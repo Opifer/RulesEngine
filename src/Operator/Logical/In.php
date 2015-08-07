@@ -1,36 +1,29 @@
 <?php
 
-namespace Opifer\RulesEngine\Operator;
+namespace Opifer\RulesEngine\Operator\Logical;
 
-use Opifer\RulesEngine\Rule\Rule;
+use Opifer\RulesEngine\Operator\LogicalOperator;
 
-class In extends Operator
+class In extends LogicalOperator
 {
     /**
-     * When both sides are array, it will determine if ALL of $rule->getRight()'s items
-     * are inside the $param.
-     *
-     * @param  Opifer\RulesEngine\Rule\Rule
-     * @return boolean
+     * {@inheritDoc}
      */
-    public function evaluate(Rule $rule)
+    public function evaluate($left, $right)
     {
-        if (is_array($rule->getLeft()) && is_array($rule->getRight())) {
-            $intersect = array_intersect($rule->getLeft(), $rule->getRight());
-            if (array_diff($rule->getRight(), $intersect))
+        if (is_array($left) && is_array($right)) {
+            $intersect = array_intersect($right, $left);
+            if (array_diff($left, $intersect)) {
                 return false;
+            }
+
             return true;
-        } elseif (is_array($rule->getLeft()) && !is_array($rule->getRight())) {
-            return in_array($rule->getRight(), $rule->getLeft());
-        } elseif (!is_array($rule->getLeft()) && is_array($rule->getRight())) {
-            return in_array($rule->getLeft(), $rule->getRight());
+        } elseif (is_array($left) && !is_array($right)) {
+            return false;
+        } elseif (!is_array($left) && is_array($right)) {
+            return in_array($left, $right);
         }
 
-        return false;
-    }
-
-    public function getLabel()
-    {
-        return 'exists in';
+        return (false === strpos($right, $left)) ? false : true;
     }
 }

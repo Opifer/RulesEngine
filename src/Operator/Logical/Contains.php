@@ -1,22 +1,17 @@
 <?php
 
-namespace Opifer\RulesEngine\Operator;
+namespace Opifer\RulesEngine\Operator\Logical;
 
-use Opifer\RulesEngine\Rule\Rule;
+use Opifer\RulesEngine\Operator\LogicalOperator;
 
-class Contains extends Operator
+class Contains extends LogicalOperator
 {
-    public function evaluate(Rule $rule)
+    public function evaluate($left, $right)
     {
-        if (is_array($rule->getLeft())) {
-            return in_array($rule->getRight(), $rule->getLeft());
+        if (is_array($left)) {
+            return in_array($right, $left);
         } else {
-            return (false === strpos($rule->getLeft(), $rule->getRight())) ? false : true;
+            return (false === strpos($left, $right)) ? false : true;
         }
-    }
-
-    public function getLabel()
-    {
-        return 'contains';
     }
 }

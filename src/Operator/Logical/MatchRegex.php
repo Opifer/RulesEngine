@@ -1,18 +1,13 @@
 <?php
 
-namespace Opifer\RulesEngine\Operator;
+namespace Opifer\RulesEngine\Operator\Logical;
 
-use Opifer\RulesEngine\Rule\Rule;
+use Opifer\RulesEngine\Operator\LogicalOperator;
 
-class MatchRegex extends Operator
+class MatchRegex extends LogicalOperator
 {
-    public function evaluate(Rule $rule)
+    public function evaluate($left, $right)
     {
-        return (preg_match($rule->getLeft(), $rule->getRight())) ? true : false;
-    }
-
-    public function getLabel()
-    {
-        return 'matches regex';
+        return (preg_match($right, $left)) ? true : false;
     }
 }

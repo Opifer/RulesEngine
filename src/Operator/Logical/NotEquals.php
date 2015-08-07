@@ -1,18 +1,13 @@
 <?php
 
-namespace Opifer\RulesEngine\Operator;
+namespace Opifer\RulesEngine\Operator\Logical;
 
-use Opifer\RulesEngine\Rule\Rule;
+use Opifer\RulesEngine\Operator\LogicalOperator;
 
-class NotEquals extends Operator
+class NotEquals extends LogicalOperator
 {
-    public function evaluate(Rule $rule)
+    public function evaluate($left, $right)
     {
-        return $rule->getLeft() !== $rule->getRight();
-    }
-
-    public function getLabel()
-    {
-        return 'does not equal';
+        return $left !== $right;
     }
 }

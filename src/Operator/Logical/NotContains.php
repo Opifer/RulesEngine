@@ -1,22 +1,17 @@
 <?php
 
-namespace Opifer\RulesEngine\Operator;
+namespace Opifer\RulesEngine\Operator\Logical;
 
-use Opifer\RulesEngine\Rule\Rule;
+use Opifer\RulesEngine\Operator\LogicalOperator;
 
-class NotContains extends Operator
+class NotContains extends LogicalOperator
 {
-    public function evaluate(Rule $rule)
+    public function evaluate($left, $right)
     {
-        if (is_array($rule->getLeft())) {
-            return !in_array($rule->getRight(), $rule->getLeft());
+        if (is_array($left)) {
+            return !in_array($right, $left);
         } else {
-            return (false === strpos($rule->getLeft(), $rule->getRight())) ? true : false;
+            return (false === strpos($left, $right)) ? true : false;
         }
-    }
-
-    public function getLabel()
-    {
-        return 'does not contain';
     }
 }
