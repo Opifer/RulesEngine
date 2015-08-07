@@ -8,25 +8,42 @@ use Opifer\RulesEngine\Context\Context;
 
 class RulesEngine
 {
+    /** @var string */
+    protected $configPath;
+
     /**
-     * Interpret this rule.
+     * Constructor
+     *
+     * @param string $configPath
+     */
+    public function __construct($configPath = null)
+    {
+        if ($configPath) {
+            $this->configPath = $configPath;
+        } else {
+            $this->configPath = __DIR__.'/Resources/config';
+        }
+    }
+
+    /**
+     * Interpret the conditionset.
      *
      * @param ConditionSet $set
      * @param Context      $context
      *
      * @return bool
      */
-    public function interpret($rule, Context $context = null)
+    public function interpret($set, Context $context = null)
     {
         if (!$context) {
             $context = new Context();
         }
 
-        if ($rule instanceof ConditionSet) {
-            return $rule->evaluate($context);
+        if ($set instanceof ConditionSet) {
+            return $set->evaluate($context);
         }
 
-        return $context->evaluate($rule);
+        return $context->evaluate($set);
     }
 
     /**
@@ -59,7 +76,7 @@ class RulesEngine
     public function getSerializer()
     {
         return SerializerBuilder::create()
-            ->addMetadataDir(__DIR__.'/Resources/config')
+            ->addMetadataDir($this->configPath)
             ->build();
     }
 }
