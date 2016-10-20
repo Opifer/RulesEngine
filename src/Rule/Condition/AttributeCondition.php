@@ -5,7 +5,7 @@ namespace Opifer\RulesEngine\Rule\Condition;
 use JMS\Serializer\Annotation as JMS;
 
 use Opifer\RulesEngine\Environment\EnvironmentInterface;
-use Opifer\RulesEngine\Value\String;
+use Opifer\RulesEngine\Value\StringValue;
 
 class AttributeCondition extends BaseCondition
 {
@@ -37,7 +37,7 @@ class AttributeCondition extends BaseCondition
      * @var string
      *
      * @JMS\Expose
-     * @JMS\Type("Opifer\RulesEngine\Value\String")
+     * @JMS\Type("Opifer\RulesEngine\Value\StringValue")
      */
     protected $right;
 
@@ -46,7 +46,7 @@ class AttributeCondition extends BaseCondition
      */
     public function __construct()
     {
-        $this->right = new String();
+        $this->right = new StringValue();
     }
 
     /**

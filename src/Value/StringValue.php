@@ -5,11 +5,11 @@ namespace Opifer\RulesEngine\Value;
 use JMS\Serializer\Annotation as JMS;
 
 /**
- * String
+ * StringValue
  *
  * @JMS\ExclusionPolicy("none")
  */
-class String extends Value implements ValueInterface
+class StringValue extends Value implements ValueInterface
 {
     /**
      * @var string

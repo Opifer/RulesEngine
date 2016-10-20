@@ -5,7 +5,7 @@ namespace Opifer\RulesEngine\Value;
 use JMS\Serializer\Annotation as JMS;
 
 /**
- * String
+ * ArrayList
  *
  * @JMS\ExclusionPolicy("none")
  */

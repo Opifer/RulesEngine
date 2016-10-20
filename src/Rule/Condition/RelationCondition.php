@@ -5,7 +5,6 @@ namespace Opifer\RulesEngine\Rule\Condition;
 use JMS\Serializer\Annotation as JMS;
 
 use Opifer\RulesEngine\Environment\EnvironmentInterface;
-use Opifer\RulesEngine\Value\String;
 
 class RelationCondition extends AttributeCondition
 {

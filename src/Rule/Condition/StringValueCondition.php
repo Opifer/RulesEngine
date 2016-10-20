@@ -21,7 +21,7 @@ class StringValueCondition extends ValueCondition
      * @var string
      *
      * @JMS\Expose
-     * @JMS\Type("Opifer\RulesEngine\Value\String")
+     * @JMS\Type("Opifer\RulesEngine\Value\StringValue")
      */
     protected $right;
 
